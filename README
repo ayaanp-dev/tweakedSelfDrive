@@ -1,8 +1,8 @@
-THIS IS NOT AWESOME CODE...
+This is a self driving car I have made!
 
-Also, I deleted the training_data.npy as I use the balanced_training_data.npy, which is in the repo, for training.  So if you go to like create_training_data or
-balance_data.py, don't mind that it used training_data.npy
+Do note that this doesn't work on a real car, of course.  This project is being tested on your screen, so like some car game.
+I am working on testing as it is kinda funky, but that should be fixed soon.
 
-In addition, i deleted the trained mooel, which is called xception2_net, because it exceeds file limit, so don't worry if you see a program using xception2_net
+If you have any problems or solutions or whatever, please feel free to make an issue or if it is more code, make a pull request!
 
-This is tweaked as I tweaked it a lot, but the base is from https://github.com/Sentdex/pygta5/tree/master/Versions/v0.03
+This is really really tweaked, but the base is from https://github.com/Sentdex/pygta5/
