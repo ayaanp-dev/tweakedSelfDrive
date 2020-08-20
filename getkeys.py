@@ -3,9 +3,8 @@
 import win32api as wapi
 import time
 
-
 keyList = ["\b"]
-for char in "ABCDEFGHIJKLMNOPQRSTUVWXYZ 123456789,.'£$/\\":
+for char in "ABCDEFGHIJKLMNOPQRSTUVWXYZ 123456789,.'APS$/\\":
     keyList.append(char)
 
 def key_check():
@@ -14,4 +13,3 @@ def key_check():
         if wapi.GetAsyncKeyState(ord(key)):
             keys.append(key)
     return keys
- 
