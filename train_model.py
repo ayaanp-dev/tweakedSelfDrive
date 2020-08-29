@@ -9,22 +9,22 @@ tensorboard_cb = TensorBoard(log_dir="logs/", profile_batch=0)
 WIDTH = 80
 HEIGHT = 60
 LEARNING_RATE = 0.001
-EPOCHS = 8
-BATCH_SIZE = 64
+EPOCHS = 100
+BATCH_SIZE = 75
 MODEL_NAME = f"SelfDrivingCar-{time.time()}.h5"
 
-model = xception(WIDTH, HEIGHT, LEARNING_RATE)
+model = conv(WIDTH, HEIGHT, LEARNING_RATE)
 
 train_data = np.load("balanced_data.npy", allow_pickle=True)
 
 train = train_data[:-100]
 test = train_data[-100:]
 
-x_train = np.array([sample[0] for sample in train]).reshape(-1, WIDTH, HEIGHT, 1)
-y_train = np.array([sample[1] for sample in train])
+x_train = np.array([sample[0] for sample in train], dtype="int32").reshape(-1, WIDTH, HEIGHT, 1)
+y_train = np.array([sample[1] for sample in train], dtype="int32")
 
-x_test = np.array([sample[0] for sample in test]).reshape(-1, WIDTH, HEIGHT, 1)
-y_test = np.array([sample[1] for sample in test])
+x_test = np.array([sample[0] for sample in test], dtype="int32").reshape(-1, WIDTH, HEIGHT, 1)
+y_test = np.array([sample[1] for sample in test], dtype="int32")
 
 print(x_train)
 print(y_train)

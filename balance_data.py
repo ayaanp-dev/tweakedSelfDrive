@@ -56,15 +56,15 @@ for data in train_data:
         print("no matches")
 
 
-##w = w[:len(s)][:len(a)][:len(d)][:len(wa)][:len(wd)][:len(sa)][:len(sd)]
-##s = s[:len(w)]
-##a = a[:len(w)]
-##d = d[:len(w)]
-##wa = wa[:len(w)]
-##wd = wd[:len(w)]
-##sa = sa[:len(w)]
-##sd = sd[:len(w)]
-##nk = nk[:len(w)]
+# w = w[:len(s)][:len(a)][:len(d)][:len(wa)][:len(wd)][:len(sa)][:len(sd)]
+# s = s[:len(w)]
+# a = a[:len(w)]
+# d = d[:len(w)]
+# wa = wa[:len(w)]
+# wd = wd[:len(w)]
+# sa = sa[:len(w)]
+# sd = sd[:len(w)]
+# nk = nk[:len(w)]
 
 final_data = w + a + s + d + wa + wd + sa + sd + nk
 shuffle(final_data)

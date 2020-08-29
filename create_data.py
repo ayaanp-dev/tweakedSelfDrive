@@ -18,7 +18,7 @@ def keys_to_output():
     sd = [0,0,0,0,0,0,0,1,0]
     nk = [0,0,0,0,0,0,0,0,1]
     
-    output = [0,0,0,0,0,0,0,0]
+    output = [0,0,0,0,0,0,0,0,0]
 
     if keyboard.is_pressed("w"):
         output = w

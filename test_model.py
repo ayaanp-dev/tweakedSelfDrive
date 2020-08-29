@@ -8,12 +8,12 @@ import time
 import tensorflow as tf
 from tensorflow.keras.models import load_model
 
-PATH_TO_MODEL = "" #Put in your path to your model
+MODEL_NAME = "" #Put trained model file in here
 
 def main():
 
-    model = load_model(f"{PATH_TO_MODEL}.h5")
-    
+    model = load_model(f"{MODEL_NAME}.h5")
+
     for i in list(range(4))[::-1]:
         print(i+1)
         time.sleep(1)
@@ -24,33 +24,33 @@ def main():
             screen = get_screen(region=(0,40,800,600))
             screen = cv2.cvtColor(screen, cv2.COLOR_BGR2GRAY)
             screen = cv2.resize(screen, (80,60))
-            moves = list(np.around(model.predict([screen.reshape(-1,80,60,1)])[0]))
 
-            for i in range(len(moves)):
-                moves[i] = i/1e+1
+            moves = model.predict([screen.reshape(-1, 80, 60, 1)])[0]
 
-            print(moves)
-
-            if np.argmax(moves) == 0:
-                presskeys.w()
-            elif np.argmax(moves) == 1:
-                presskeys.a()
-            elif np.argmax(moves) == 2:
-                presskeys.s()
-            elif np.argmax(moves) == 3:
-                presskeys.d()
-            elif np.argmax(moves) == 4:
-                presskeys.wa()
-            elif np.argmax(moves) == 5:
-                presskeys.wd()
-            elif np.argmax(moves) == 6:
-                presskeys.sa()
-            elif np.argmax(moves) == 7:
-                presskeys.sd()
-            elif np.argmax(moves) == 8:
+            if moves[0] > 0.7:
                 presskeys.w()
             else:
-                print("No matches")
+                moves = np.delete(moves, 0)
+
+                if np.argmax(moves) == 0:
+                    presskeys.wa()
+                elif np.argmax(moves) == 1:
+                    presskeys.s()
+                elif np.argmax(moves) == 2:
+                    presskeys.wd()
+                elif np.argmax(moves) == 3:
+                    presskeys.wa()
+                elif np.argmax(moves) == 4:
+                    presskeys.wd()
+                elif np.argmax(moves) == 5:
+                    presskeys.sa()
+                elif np.argmax(moves) == 6:
+                    presskeys.sd()
+                elif np.argmax(moves) == 7:
+                    # presskeys.w()
+                    pass
+                else:
+                    print("No matches")
 
         keys = key_check()
 
